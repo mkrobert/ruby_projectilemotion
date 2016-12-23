@@ -2,7 +2,7 @@
 #https://github.com/mkrobert/ruby_projectilemotion
 
 include Math
-#required kinematics library is located at
+#required kinematics library, kinematics.rb, is located at
 #https://github.com/mkrobert/ruby_kinematics
 require './kinematics'
 
