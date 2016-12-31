@@ -2,7 +2,7 @@
 #https://github.com/mkrobert/ruby_projectilemotion
 
 include Math
-#required kinematics library, kinematics.rb, is located at
+#required kinematics library is located at
 #https://github.com/mkrobert/ruby_kinematics
 require './kinematics'
 
@@ -47,12 +47,17 @@ class ProjectileMotion < Kinematics
   def findDeltaX(x,y,h,th)
     if (x[3] != nil)
       return x[3]
-    elsif (y[0] != nil) && (y[2] != nil) && (y[3] != nil)
-      return x[0] * (findT(y[0],y[1],y[2],y[3],y[4]))
     else
-      return "unexpected findDeltaX result"
+      return x[0] * (findT(y[0],y[1],y[2],y[3],y[4]))
     end
   end
+
+  def findDeltaY(x,y,h,th)
+    if (y[3] != nil)
+      return y[3]
+    else
+      return y[0] * (findT(y[0],y[1],y[2],y[3],y[4]))
+    else
 
 end
 
@@ -60,4 +65,5 @@ end
 #A water balloon is thrown horizontally with a speed of 8.31m/s from the roof of a building of height 23.0m. 
 #How far does the balloon travel horizontally before striking the ground?
 promot = ProjectileMotion.new
+#puts promot.findDeltaX([8.31,nil,nil,nil,nil],[0,nil,-9.8,-23.0,nil],nil,nil).to_s
 puts promot.findDeltaX([8.31,nil,nil,nil,nil],[0,nil,-9.8,-23.0,nil],nil,nil).to_s
